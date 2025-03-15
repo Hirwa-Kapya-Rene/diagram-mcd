@@ -1,20 +1,22 @@
 -- Table des rôles (Administrateur, Enseignant, Apprenant)
-CREATE TABLE Rôle (
+CREATE TABLE Roles (
     id_role INT PRIMARY KEY AUTO_INCREMENT,
-    nom_role VARCHAR(30) UNIQUE NOT NULL
+    intitule VARCHAR(30) UNIQUE NOT NULL
 );
 
 -- Table des utilisateurs (apprenants, enseignants, administrateurs)
-CREATE TABLE Utilisateur (
+CREATE TABLE Utilisateurs (
     id_utilisateur INT PRIMARY KEY AUTO_INCREMENT,
-    prenom VARCHAR(50) NOT NULL,
-    nom VARCHAR(50) NOT NULL,
-    email VARCHAR(100) UNIQUE NOT NULL,
+    prenom VARCHAR(20) NOT NULL,
+    nom VARCHAR(20) NOT NULL,
+    email VARCHAR(25) UNIQUE NOT NULL,
     genre ENUM('H', 'F') NOT NULL,
-    role_id INT NOT NULL,
-    cohorte_id INT NOT NULL,
-    FOREIGN KEY (role_id) REFERENCES Rôle(id_role),
-    FOREIGN KEY (cohorte_id) REFERENCES Cohorte(id_cohorte)
+    id_role INT NOT NULL,
+    id_cohorte INT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (id_role) REFERENCES Roles(id_role),
+    FOREIGN KEY (id_cohorte) REFERENCES Cohorte(id_cohorte)
 );
 
 -- Table des cohortes (groupes d'apprenants)
