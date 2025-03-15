@@ -1,4 +1,4 @@
--- Table des rôles (Administrateur, Enseignant, Apprenant)
+
 CREATE TABLE Roles (
     id_role INT PRIMARY KEY AUTO_INCREMENT,
     intitule VARCHAR(30) UNIQUE NOT NULL,
@@ -6,22 +6,22 @@ CREATE TABLE Roles (
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
--- Table des utilisateurs (apprenants, enseignants, administrateurs)
+
 CREATE TABLE Utilisateurs (
-    id_utilisateur INT PRIMARY KEY AUTO_INCREMENT,
+    id_utilisateur INT PRIMARY KEY,
     prenom VARCHAR(20) NOT NULL,
     nom VARCHAR(20) NOT NULL,
     email VARCHAR(25) UNIQUE NOT NULL,
-    genre ENUM('H', 'F') NOT NULL,
+    genre VARCHAR NOT NULL,
     id_role INT NOT NULL,
     id_cohorte INT NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    created_at TIMESTAMP,
+    updated_at TIMESTAMP,
     FOREIGN KEY (id_role) REFERENCES Roles(id_role),
     FOREIGN KEY (id_cohorte) REFERENCES Cohortes(id_cohorte)
 );
 
--- Table des cohortes (groupes d'apprenants)
+
 CREATE TABLE Cohortes (
     id_cohorte INT PRIMARY KEY AUTO_INCREMENT,
     nom_cohorte VARCHAR(20) NOT NULL,
@@ -34,7 +34,7 @@ CREATE TABLE Cohortes (
 );
 
 CREATE TABLE Sponsors (
-    id_sponsor INT PRIMARY KEY AUTO_INCREMENT,
+    id_sponsor INT PRIMARY KEY,
     nom_sponsor VARCHAR(20) NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
@@ -88,7 +88,8 @@ CREATE TABLE Presence (
     statut ENUM('Présent', 'Retard', 'Absent', 'Justifié') NOT NULL,
     heure_check_in TIME NULL,
     heure_check_out TIME NULL,
-    created_at
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     FOREIGN KEY (id_utilisateur) REFERENCES Utilisateurs(id_utilisateur),
     FOREIGN KEY (id_session) REFERENCES Sessions(id_session),
     UNIQUE (utilisateur_id, session_id) 
@@ -97,11 +98,11 @@ CREATE TABLE Presence (
 
 CREATE TABLE Justifications (
     id_justification INT PRIMARY KEY AUTO_INCREMENT,
-    utilisateur_id INT NOT NULL,
-    session_id INT NOT NULL,
+    id_presence INT NOT NULL,
     motif TEXT NOT NULL,
     fichier VARCHAR(255) NULL,
     statut_validation ENUM('Validé', 'Rejeté', 'En attente') DEFAULT 'En attente',
-    FOREIGN KEY (utilisateur_id) REFERENCES Utilisateur(id_utilisateur),
-    FOREIGN KEY (session_id) REFERENCES Session(id_session)
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (id_presence) REFERENCES Presence(id_presence)
 );
