@@ -52,7 +52,7 @@ CREATE TABLE Formation (
     FOREIGN KEY (id_cohorte) REFERENCES Cohortes(id_cohorte)
 );
 
-
+-- Table salles
 CREATE TABLE Salles (
     id_salle INT PRIMARY KEY AUTO_INCREMENT,
     nom_salle VARCHAR(20) NOT NULL,
