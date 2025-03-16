@@ -96,7 +96,7 @@ CREATE TABLE Presence (
     UNIQUE (utilisateur_id, session_id) 
 );
 
-
+-- Table justification
 CREATE TABLE Justifications (
     id_justification INT PRIMARY KEY AUTO_INCREMENT,
     id_presence INT NOT NULL,
