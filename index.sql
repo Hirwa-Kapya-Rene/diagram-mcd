@@ -33,6 +33,7 @@ CREATE TABLE Cohortes (
     FOREIGN KEY (id_sponsor) REFERENCES id_sponsors(id_sponsor)
 );
 
+-- table sponsors
 CREATE TABLE Sponsors (
     id_sponsor INT PRIMARY KEY,
     nom_sponsor VARCHAR(20) NOT NULL,
