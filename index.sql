@@ -6,7 +6,7 @@ CREATE TABLE Roles (
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
-
+-- Table utilisateur
 CREATE TABLE Utilisateurs (
     id_utilisateur INT PRIMARY KEY,
     prenom VARCHAR(20) NOT NULL,
