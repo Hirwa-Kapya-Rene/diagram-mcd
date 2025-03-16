@@ -1,4 +1,4 @@
-
+-- Table role
 CREATE TABLE Roles (
     id_role INT PRIMARY KEY AUTO_INCREMENT,
     intitule VARCHAR(30) UNIQUE NOT NULL,
