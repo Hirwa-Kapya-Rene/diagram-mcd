@@ -41,7 +41,7 @@ CREATE TABLE Sponsors (
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
-
+-- Table formation
 CREATE TABLE Formation (
     id_formation INT PRIMARY KEY AUTO_INCREMENT,
     intitule VARCHAR(100) NOT NULL,
