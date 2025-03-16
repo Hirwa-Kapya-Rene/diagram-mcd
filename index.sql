@@ -21,7 +21,7 @@ CREATE TABLE Utilisateurs (
     FOREIGN KEY (id_cohorte) REFERENCES Cohortes(id_cohorte)
 );
 
-
+-- Table cohorte
 CREATE TABLE Cohortes (
     id_cohorte INT PRIMARY KEY AUTO_INCREMENT,
     nom_cohorte VARCHAR(20) NOT NULL,
