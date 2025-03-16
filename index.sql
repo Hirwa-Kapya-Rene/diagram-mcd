@@ -81,7 +81,7 @@ CREATE TABLE Sessions (
     FOREIGN KEY (id_salle) REFERENCES Salles(id_salle)
 );
 
-
+-- Table presence
 CREATE TABLE Presence (
     id_presence INT PRIMARY KEY AUTO_INCREMENT,
     id_utilisateur INT NOT NULL,
