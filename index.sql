@@ -69,7 +69,7 @@ CREATE TABLE Villes (
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
-
+-- Table session
 CREATE TABLE Sessions (
     id_session INT PRIMARY KEY AUTO_INCREMENT,
     id_salle INT NOT NULL,
