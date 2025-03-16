@@ -61,7 +61,7 @@ CREATE TABLE Salles (
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     FOREIGN KEY (id_ville) REFERENCES Villes(id_ville)
 );
-
+-- Table villes
 CREATE TABLE Villes (
     id_ville INT PRIMARY KEY AUTO_INCREMENT,
     nom_ville VARCHAR(20) NOT NULL,
